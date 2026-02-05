@@ -3,8 +3,12 @@ from sqlalchemy import text
 from sqlalchemy.orm import Session
 
 from app.db.session import get_db
+from app.api.router import api_router
 
 app = FastAPI(title="Task Manager API")
+
+# подключаем все роуты одним местом
+app.include_router(api_router)
 
 
 @app.get("/health")
